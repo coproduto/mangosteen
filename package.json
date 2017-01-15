@@ -1,8 +1,8 @@
 {
-  "name": "mangle",
+  "name": "mango",
   "version": "0.1.0",
   "description": "A very small mangler.",
-  "main": "src/mangle.js",
+  "main": "src/mango.js",
   "scripts": {
     "test": "mocha"
   },

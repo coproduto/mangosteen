@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var mangle = require('../src/mangle');
+var mangle = require('../src/mango');
 
 function randomChar(string) {
     return string.charAt(Math.floor(Math.random() * string.length));
