@@ -70,4 +70,7 @@ Mangler.prototype.makeLookupTable = function() {
     return this._reverseTable;
 }
 
-module.exports = {Mangler: Mangler};
+module.exports = {
+    Mangler: Mangler,
+    default: Mangler
+};

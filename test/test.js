@@ -1,5 +1,5 @@
 var expect = require('chai').expect;
-var mangle = require('../src/mango');
+var mangosteen = require('../src/mangosteen');
 
 function randomChar(string) {
     return string.charAt(Math.floor(Math.random() * string.length));
@@ -22,7 +22,7 @@ describe('Mangler', function() {
     var mangler;
 
     beforeEach(function() {
-	mangler = new mangle.Mangler();
+	mangler = new mangosteen.Mangler();
     });
     
     it("should mangle identifiers into strings", function() {

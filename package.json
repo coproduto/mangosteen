@@ -1,15 +1,16 @@
 {
-  "name": "mango",
-  "version": "0.1.0",
-  "description": "A very small mangler.",
-  "main": "src/mango.js",
-  "scripts": {
-    "test": "mocha"
-  },
-  "author": "Pedro Castilho",
-  "license": "MIT",
-  "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.2.0"
-  }
+    "name": "mangosteen",
+    "version": "0.1.0",
+    "repository": "https://github.com/pcstl/mangosteen"
+    "description": "A very small ES5 symbol mangler.",
+    "main": "src/mangosteen.js",
+    "scripts": {
+	"test": "mocha"
+    },
+    "author": "Pedro Castilho",
+    "license": "MIT",
+    "devDependencies": {
+	"chai": "^3.5.0",
+	"mocha": "^3.2.0"
+    }
 }
