@@ -1,7 +1,7 @@
 {
     "name": "mangosteen",
     "version": "0.1.0",
-    "repository": "https://github.com/pcstl/mangosteen"
+    "repository": "https://github.com/pcstl/mangosteen",
     "description": "A very small ES5 symbol mangler.",
     "main": "src/mangosteen.js",
     "scripts": {
