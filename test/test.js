@@ -62,7 +62,7 @@ describe('Mangler', function() {
     it("should mangle any number of identifiers into unique symbols", function() {
 	var identifiers = [];
 	
-	for(var i = 0; i < 100; i++) {
+	for(var i = 0; i < 10000; i++) {
 	    identifiers.push(makeIdentifier(10));
 	}
 

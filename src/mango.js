@@ -10,6 +10,13 @@ var Mangler = function() {
     };
 }
 
+function insertChar(input, c, index) {
+    return input.substring(0, index)
+	+ c
+	+ input.substring(index + 1, input.length);
+}
+
+
 Mangler.prototype._nextChar = function(c) {
     switch(c) {
     case this._codes.$: return 'A';
@@ -21,21 +28,21 @@ Mangler.prototype._nextChar = function(c) {
 }
 
 Mangler.prototype._nextStr = function(s) {
+    var output = s;
     var index = s.length - 1;
+    
     var c = s.charCodeAt(index);
+    while(c === this._codes.$) {
+	output = insertChar(output, this._nextChar(c), index);
 
-    if(c === this._codes.$) {
-	if(index > 0) {
-	    index--;
-	    c = s.charCodeAt(index);
-	    var toInsert = this._nextChar(c);
-	    return s.substring(0,index-1) + toInsert + s.substring(index+1,s.length);
-	} else {
-	    return s + 'A';
+	index--;
+	if(index < 0) {
+	    return output + 'A';
 	}
-    } else {
-	return s.substring(0,s.length-1) + this._nextChar(c);
+	c = s.charCodeAt(index);
     }
+
+    return insertChar(output, this._nextChar(c), index);
 }
 
 Mangler.prototype.mangle = function(str) {
