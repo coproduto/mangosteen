@@ -2,6 +2,7 @@ var Mangler = function() {
     this._table = {};
     this._reverseTable = {};
     this._current = "A";
+    this._prefix = ""
     this._codes = {
 	 $: 36,
 	 Z: 90,
@@ -10,10 +11,10 @@ var Mangler = function() {
     };
 }
 
-function insertChar(input, c, index) {
-    return input.substring(0, index)
+function insertChar(c, index, string) {
+    return string.substring(0, index)
 	+ c
-	+ input.substring(index + 1, input.length);
+	+ string.substring(index + 1, string.length);
 }
 
 
@@ -33,7 +34,7 @@ Mangler.prototype._nextStr = function(s) {
     
     var c = s.charCodeAt(index);
     while(c === this._codes.$) {
-	output = insertChar(output, this._nextChar(c), index);
+	output = insertChar(this._nextChar(c), index, output);
 
 	index--;
 	if(index < 0) {
@@ -42,12 +43,12 @@ Mangler.prototype._nextStr = function(s) {
 	c = s.charCodeAt(index);
     }
 
-    return insertChar(output, this._nextChar(c), index);
+    return insertChar(this._nextChar(c), index, output);
 }
 
 Mangler.prototype.mangle = function(str) {
     if(!(str in this._table)) {
-	this._table[str] = this._current;
+	this._table[str] = this._prefix + this._current;
 	this._reverseTable[this._current] = str;
 	this._current = this._nextStr(this._current);
     }
@@ -70,7 +71,11 @@ Mangler.prototype.makeLookupTable = function() {
     return this._reverseTable;
 }
 
+Mangler.prototype.setPrefix = function(p) {
+    this._prefix = p;
+}
+
 module.exports = {
     Mangler: Mangler,
-    default: Mangler
+    default: { Mangler: Mangler }
 };

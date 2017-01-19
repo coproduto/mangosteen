@@ -1,22 +1,6 @@
 var expect = require('chai').expect;
 var mangosteen = require('../src/mangosteen');
-
-function randomChar(string) {
-    return string.charAt(Math.floor(Math.random() * string.length));
-}
-
-function makeIdentifier(length) {
-    var identifier = "";
-    var first = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRTUVWXYZ";
-    var rest = first + "0123456789";
-    
-    identifier += randomChar(first);
-    for(var i = 0; i < length - 1; i++) {
-	identifier += randomChar(rest);
-    }
-
-    return identifier;
-}
+var makeIdentifier = require('./makeIdentifier');
 
 describe('Mangler', function() {
     var mangler;
@@ -65,6 +49,8 @@ describe('Mangler', function() {
 	for(var i = 0; i < 10000; i++) {
 	    identifiers.push(makeIdentifier(10));
 	}
+
+	//TODO: filtrar os identificadores pra remover entradas duplicadas
 
 	mangled = identifiers.map(function(identifier) {
 	    return mangler.mangle(identifier);
