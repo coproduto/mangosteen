@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var assert = require('chai').assert;
-var mangosteen = require('../src/unique.js');
-var makeIdentifier = require('./makeIdentifier');
+var mangosteen = require('../src/unique');
+var makeIdentifier = require('../src/makeIdentifier');
 
 describe('UniqueGen', function() {
     var unique;

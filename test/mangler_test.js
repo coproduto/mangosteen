@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 var mangosteen = require('../src/mangosteen');
-var makeIdentifier = require('./makeIdentifier');
+var makeIdentifier = require('../src/makeIdentifier');
 
 describe('Mangler', function() {
     var mangler;
