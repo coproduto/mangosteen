@@ -1,7 +1,7 @@
 "use strict"
 var expect = require('chai').expect;
 var assert = require('chai').assert;
-var mangosteen = require('../src/unique');
+var mangosteen = require('../src/mangosteen');
 var makeIdentifier = require('../src/makeIdentifier');
 
 describe('UniqueGen', function() {
