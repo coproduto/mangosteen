@@ -7,7 +7,7 @@ Mangosteen is a very small symbol mangler. It also supports generating unique id
 Install using npm:
 
 ```
-npm install mangosteen
+npm install --save mangosteen
 ```
 
 ```javascript

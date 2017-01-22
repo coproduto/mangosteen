@@ -1,3 +1,4 @@
+"use strict"
 var expect = require('chai').expect;
 var mangosteen = require('../src/mangosteen');
 var makeIdentifier = require('../src/makeIdentifier');
@@ -52,11 +53,11 @@ describe('Mangler', function() {
 
 	//TODO: filtrar os identificadores pra remover entradas duplicadas
 
-	mangled = identifiers.map(function(identifier) {
+	var mangled = identifiers.map(function(identifier) {
 	    return mangler.mangle(identifier);
 	});
 
-	mangledUnique = mangled.filter(function(value, index, self) {
+	var mangledUnique = mangled.filter(function(value, index, self) {
 	    return self.indexOf(value) === index;
 	});;
 
