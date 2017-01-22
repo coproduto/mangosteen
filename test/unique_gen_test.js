@@ -26,7 +26,7 @@ describe('UniqueGen', function() {
 	var identifiers = [];
 	var identifier;
 
-	for(var i = 0; i < 10000; i++) {
+	for(var i = 0; i < 100000; i++) {
 	    identifiers.push(makeIdentifier(10));
 	}
 	identifiers.push(undefined);
@@ -45,7 +45,7 @@ describe('UniqueGen', function() {
 	var identifiers = [];
 	var identifier;
 
-	for(var i = 0; i < 10000; i++) {
+	for(var i = 0; i < 100000; i++) {
 	    identifiers.push(makeIdentifier(10));
 	}
 	identifiers.push(undefined);

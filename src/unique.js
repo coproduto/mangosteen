@@ -24,7 +24,21 @@ var UniqueGen = function(){
   }
 
   UniqueGen.prototype.generate = function() {
-    return undefined;
+    var prefix = "$$" + this._allowedCharacters.charAt(0);
+
+    var possibleCollisions = this._registeredIdentifiers.slice(0);
+    while(possibleCollisions.length > 0) {
+      possibleCollisions = possibleCollisions.filter(function(x) {
+        return x.startsWith(prefix);
+      });
+
+      if(possibleCollisions.length > 0) {
+        prefix = _nextStr(prefix);
+      }
+    }
+
+    this._registeredIdentifiers.push(prefix);
+    return prefix;
   };
 
   UniqueGen.prototype.generateFrom = function(str) {
@@ -33,21 +47,22 @@ var UniqueGen = function(){
     var possibleCollisions = this._registeredIdentifiers.slice(0);
     while(possibleCollisions.length > 0) {
       possibleCollisions = possibleCollisions.filter(function(x) {
-	return x.startsWith(str+suffix);
+        return x.startsWith(str+suffix);
       });
 
       if(possibleCollisions.length > 0) {
-	suffix = _nextStr(suffix);
+        suffix = _nextStr(suffix);
       }
     }
-    
+
+    this._registeredIdentifiers.push(str + suffix);
     return str + suffix;
   };
 
   UniqueGen.prototype.registerIdentifiers = function(ids) {
     if(typeof ids === "object") {
       if(Array.isArray(ids)) {
-	this._registeredIdentifiers.concat(ids);
+        this._registeredIdentifiers.concat(ids);
       }
     } else if(typeof ids === "string") {
       this._registeredIdentifiers.push(ids);
@@ -61,4 +76,3 @@ module.exports = {
   UniqueGen: UniqueGen,
   default: UniqueGen
 };
-
